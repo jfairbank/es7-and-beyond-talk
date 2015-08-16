@@ -1,0 +1,19 @@
+{
+  "name": "es7-and-beyond-code",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeremy Fairbank <elpapapollo@gmail.com> (http://jeremyfairbank.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^5.8.22",
+    "gulp": "^3.9.0",
+    "gulp-run": "^1.6.10",
+    "gulp-shell": "^0.4.2",
+    "gulp-watch": "^4.3.4"
+  }
+}
