@@ -54,7 +54,9 @@ async function sequential(resources) {
   for (const resource of resources) {
     resourceTimer.stopWaitTime(resource);
     resourceTimer.startResponseTime(resource);
+
     await mockRequest(resource.url, resource.respTime);
+
     resourceTimer.stopResponseTime(resource);
   }
 }
@@ -63,6 +65,7 @@ async function parallel(resources) {
   await* resources.map(resource => {
     resourceTimer.stopWaitTime(resource);
     resourceTimer.startResponseTime(resource);
+
     return mockRequest(resource.url, resource.respTime)
       .then(() => resourceTimer.stopResponseTime(resource));
   });
