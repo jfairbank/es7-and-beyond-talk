@@ -1,8 +1,9 @@
 async function fetchJson(url) {
   const resp = await fetch(url);
   const data = await resp.json();
+  const isSuccess = resp.status >= 200 && resp.status < 300;
 
-  if (resp.status >= 200 && resp.status < 300) {
+  if (isSuccess) {
     return data;
   }
 

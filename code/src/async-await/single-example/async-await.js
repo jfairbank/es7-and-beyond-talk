@@ -5,4 +5,4 @@ async function loadOrder(orderId) {
   console.log(order);
 }
 
-loadOrder();
+loadOrder(1);

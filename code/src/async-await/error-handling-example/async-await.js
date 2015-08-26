@@ -9,4 +9,4 @@ async function loadOrder(orderId) {
   }
 }
 
-loadOrder();
+loadOrder(1);

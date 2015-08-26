@@ -7,4 +7,4 @@ async function loadCustomerFromOrder(orderId) {
   console.log(customer);
 }
 
-loadCustomerFromOrder();
+loadCustomerFromOrder(1);

@@ -1,14 +1,19 @@
 const assert = ::console.assert;
 
-class Foo {
-  myValue = 42;
+class Person {
+  firstName = 'Jeremy';
 
-  constructor() {
-    this.myOtherValue = this.myValue + 8;
+  constructor({ firstName, lastName }) {
+    if (firstName) this.firstName = firstName;
+    this.lastName = lastName;
+    this.name = `${this.firstName} ${this.lastName}`;
   }
 }
 
-const f = new Foo();
+const j = new Person({ lastName: 'Fairbank' });
+const e = new Person({ firstName: 'Emily', lastName: 'Fairbank' });
 
-assert(f.myValue === 42);
-assert(f.myOtherValue === 50);
+assert(j.firstName === 'Jeremy');
+assert(e.firstName === 'Emily');
+assert(j.name === 'Jeremy Fairbank');
+assert(e.name === 'Emily Fairbank');

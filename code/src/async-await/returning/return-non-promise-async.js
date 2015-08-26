@@ -1,7 +1,7 @@
 const assert = ::console.assert;
 
-function life() {
-  return Promise.resolve(42);
+async function life() {
+  return 42;
 }
 
 const answer = life();

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FONT_SIZE=44
+FONT_SIZE=50
 FONT_FAMILY=Monaco
 STYLE=molokai
 SYNTAX=js
@@ -8,7 +8,7 @@ OUTPUT=rtf
 FILTER=false
 START=1
 
-while getopts ":s:S:L:f" OPT; do
+while getopts ":s:S:K:L:f" OPT; do
   case $OPT in
     s)
       STYLE="$OPTARG"
@@ -16,6 +16,10 @@ while getopts ":s:S:L:f" OPT; do
       ;;
     S)
       SYNTAX="$OPTARG"
+      shift 2
+      ;;
+    K)
+      FONT_SIZE="$OPTARG"
       shift 2
       ;;
     L)

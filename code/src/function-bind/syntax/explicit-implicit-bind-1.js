@@ -1,6 +1,5 @@
 const obj = {
   foo: 'bar',
-
   log() {
     console.log(this.foo);
   }
@@ -11,5 +10,5 @@ const implicitBind = ::obj.log;
 const explicitBind = obj::obj.log;
 
 unbound();      // throw TypeError
-implicitBind(); // 'bar'
-explicitBind(); // 'bar'
+implicitBind(); // bar
+explicitBind(); // bar

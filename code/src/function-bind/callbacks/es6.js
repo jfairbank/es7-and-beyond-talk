@@ -11,5 +11,5 @@ const point = {
   }
 };
 
-eventLib.on('click', ::obj.clicked);
-eventLib.on('info', ::console.log);
+eventLib.on('click', obj.clicked.bind(obj));
+eventLib.on('info', console.log.bind(console));

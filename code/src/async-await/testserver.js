@@ -2,61 +2,74 @@ import express from 'express';
 
 const app = express();
 
-const orders = {
-  1: { id: 1, cardId: 1, total: 5.23 },
-  2: { id: 2, cardId: 2, total: 10.18 },
-  3: { id: 3, cardId: 3, total: 42.99 }
-};
+const orders = new Map([
+  [1, { id: 1, customerId: 1, total: 5.23 }],
+  [2, { id: 2, customerId: 2, total: 10.18 }],
+  [3, { id: 3, customerId: 3, total: 42.99 }]
+]);
 
-//function randomSuccess(fn) {
-//  return (req, res) => {
-//    if (Math.random() <= 0.5) {
-//      fn(req, res);
-//    } else {
-//      res.status(500).send({ success: false });
-//    }
-//  };
-//}
+const customers = new Map([
+  [1, { id: 1, name: 'Jeremy' }],
+  [2, { id: 2, name: 'Emily' }],
+  [3, { id: 3, name: 'Jet' }]
+]);
+
+function randomFail(req, res, next) {
+  const fail = Math.random() > 0.9;
+
+  if (fail) {
+    res.status(500).send({ message: 'Could not retrieve data'});
+  } else {
+    next();
+  }
+}
+
+// Uncomment for random 500 errors
+//app.use(['/orders', '/orders/:id', '/customers/:id'], randomFail);
+
+function getFromMap(map) {
+  return (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const obj = map.get(id);
+
+    if (obj) {
+      res.send(obj);
+    } else {
+      res.sendStatus(404);
+    }
+  };
+}
 
 app.get('/', (req, res) => {
   res.send(`
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title></title>
-  </head>
-  <body>
-    Hello World
-  </body>
-  </html>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title></title>
+    </head>
+    <body>
+      Hello World
+    </body>
+    </html>
   `);
 });
 
-function randomBool() {
-  return Math.random() <= 0.9;
-}
 
 app.get('/orderIds', (req, res) => {
-  if (randomBool()) {
-    res.send([1, 2, 3]);
-  } else {
-    res.status(500).send({ message: 'could not get ids' });
-  }
+  res.send([1, 2, 3]);
 });
 
-app.get('/orderDetails/:id', (req, res) => {
-  if (randomBool()) {
-    res.send(orders[req.params.id]);
-  } else {
-    res.status(500).send({ message: 'could not get details' });
-  }
+app.get('/orders', (req, res) => {
+  res.send(Array.from(orders.values()));
 });
 
-app.post('/payOrder/:id', (req, res) => {
-  const id = parseInt(req.params, 10);
-  const success = id !== 2;
-  res.send({ success });
-});
+app.get('/orders/:id', getFromMap(orders));
+app.get('/customers/:id', getFromMap(customers));
 
-app.listen(3000);
+const HOST = '127.0.0.1';
+const PORT = 3000;
+
+const server = app.listen(PORT, HOST, () => {
+  console.log(`Server listening at http://${HOST}:${PORT}`);
+});

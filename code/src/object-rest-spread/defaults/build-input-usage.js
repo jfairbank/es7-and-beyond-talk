@@ -11,6 +11,6 @@ console.log(buildInput({
   width: 300,
   placeholder: 'test@example.com'
 }));
-// <input type="password"
+// <input type="email"
 //        width="200"
 //        placeholder="test@example.com">
