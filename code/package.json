@@ -5,16 +5,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "async-server": "./node_modules/.bin/babel-node ./src/async-await/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jeremy Fairbank <elpapapollo@gmail.com> (http://jeremyfairbank.com)",
   "license": "MIT",
   "devDependencies": {
+    "babel": "^5.8.23",
     "babel-core": "^5.8.22",
     "babel-loader": "^5.3.2",
     "babel-runtime": "^5.8.20",
     "express": "^4.13.3",
     "lodash": "^3.10.1",
-    "webpack": "^1.11.0"
+    "webpack": "^1.12.0",
+    "webpack-dev-server": "^1.10.1"
   }
 }
