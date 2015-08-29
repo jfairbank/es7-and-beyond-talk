@@ -5,7 +5,7 @@ class Person {
   }
 }
 
-Object.defineProperty(Person.prototype, 'name', {
+Object.defineProperty(Person.prototype, 'fullName', {
   enumerable: true,
   get() {
     return `${this.firstName} ${this.lastName}`;
@@ -20,4 +20,4 @@ for (const key in p) {
 
 // firstName: Jeremy
 // lastName: Fairbank
-// name: Jeremy Fairbank
+// fullName: Jeremy Fairbank

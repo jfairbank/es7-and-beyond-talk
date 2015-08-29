@@ -4,7 +4,7 @@ class Person {
     this.lastName = lastName;
   }
 
-  get name() {
+  get fullName() {
     return `${this.firstName} ${this.lastName}`;
   }
 }

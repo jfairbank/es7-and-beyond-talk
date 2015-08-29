@@ -7,11 +7,11 @@ class Person {
   }
 
   @memoize
-  get name() {
+  get fullName() {
     return `${this.firstName} ${this.lastName}`;
   }
 }
 
 const person = new Person('Jeremy', 'Fairbank');
-console.log(person.name);
-console.log(person.name);
+console.log(person.fullName);
+console.log(person.fullName);

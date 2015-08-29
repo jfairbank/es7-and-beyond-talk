@@ -7,7 +7,7 @@ class Person {
   }
 
   @enumerable
-  get name() {
+  get fullName() {
     return `${this.firstName} ${this.lastName}`;
   }
 }
@@ -20,4 +20,4 @@ for (const key in p) {
 
 // firstName: Jeremy
 // lastName: Fairbank
-// name: Jeremy Fairbank
+// fullName: Jeremy Fairbank

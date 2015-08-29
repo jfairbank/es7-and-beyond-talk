@@ -4,5 +4,5 @@ let descriptor = {
   configurable: true
 };
 
-descriptor = enumerable(Person.prototype, 'name', descriptor) || descriptor;
-Object.defineProperty(Person.prototype, 'name', descriptor);
+descriptor = enumerable(Person.prototype, 'fullName', descriptor) || descriptor;
+Object.defineProperty(Person.prototype, 'fullName', descriptor);
