@@ -1,14 +1,12 @@
-import fetchJson from '../fetch-json/fetch-json-async-await';
-
-async function loadOrders(orderIds) {
+async function printOrders(orderIds) {
   const orders = [];
 
   for (const id of orderIds) {
-    const order = await fetchJson(`/orders/${id}`);
+    const order = await fetchOrder(id);
     orders.push(order);
   }
 
   console.log(orders);
 }
 
-loadOrders([1, 2, 3]);
+printOrders([1, 2, 3]);

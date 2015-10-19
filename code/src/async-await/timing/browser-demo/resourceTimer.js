@@ -1,3 +1,11 @@
+function timerKey(prefix, url, type) {
+  return [
+    prefix ? `${prefix}:` : '',
+    url,
+    type
+  ].join(' ');
+}
+
 export default {
   generateResources(prefix) {
     return this.timedResources([
@@ -14,11 +22,21 @@ export default {
   },
 
   startTimer({ prefix, url }, type) {
-    console.time(`${prefix}: ${url} ${type}`);
+    performance.mark(timerKey('start', url, type));
   },
 
   stopTimer({ prefix, url }, type) {
-    console.timeEnd(`${prefix}: ${url} ${type}`);
+    const key = timerKey('', url, type);
+    const startKey = timerKey('start', url, type);
+    const stopKey = timerKey('stop', url, type);
+
+    performance.mark(stopKey);
+    performance.measure(key, startKey, stopKey);
+
+    const { duration } = performance.getEntriesByName(key)[0];
+    performance.clearMeasures(key);
+
+    console.log(`${prefix}: ${url} ${type}: ${duration}ms`);
   },
 
   startWaitTime(resource) {

@@ -5,9 +5,9 @@ function mockRequest(url) {
 }
 
 async function time(name, fn) {
-  console.time(`${name} total`);
+  const time = performance.now();
   await fn();
-  console.timeEnd(`${name} total`);
+  console.log(`${name} total: ${performance.now() - time}ms`)
 }
 
 export { mockRequest, time };

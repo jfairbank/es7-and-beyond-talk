@@ -1,6 +1,6 @@
 import fetchJson from '../fetch-json/fetch-json-promise';
 
-function loadOrder(orderId) {
+function printOrder(orderId) {
   const promise = Promise.resolve(
     fetchJson(`/orders/${orderId}`)
   );
@@ -11,4 +11,4 @@ function loadOrder(orderId) {
   });
 }
 
-loadOrder(1);
+printOrder(1);

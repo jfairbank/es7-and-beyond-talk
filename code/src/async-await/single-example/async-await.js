@@ -1,8 +1,6 @@
-import fetchJson from '../fetch-json/fetch-json-async-await';
-
-async function loadOrder(orderId) {
-  const order = await fetchJson(`/orders/${orderId}`);
+async function printOrder(orderId) {
+  const order = await fetchOrder(orderId);
   console.log(order);
 }
 
-loadOrder(1);
+printOrder(1);
