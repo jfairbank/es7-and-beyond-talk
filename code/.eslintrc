@@ -1,18 +1,4 @@
 {
   "parser": "babel-eslint",
-  "ecmaFeatures": {
-    "modules": true
-  },
-  "rules": {
-    "eqeqeq": [2, "smart"],
-    "no-console": 0,
-    "no-return-assign": 0,
-    "no-underscore-dangle": 0,
-    "strict": 0,
-    "quotes": [2, "single"]
-  },
-  "env": {
-    "browser": true,
-    "node": true
-  }
+  "extends": "airbnb"
 }

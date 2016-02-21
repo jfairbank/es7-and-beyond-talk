@@ -1,17 +1,12 @@
 function alias(aliasName) {
-  return (target, descriptor) => {
-    const name = descriptor.property.name();
+  return (target, name, descriptor) => {
     const newDescriptor = Object.assign({}, descriptor, {
       value(...args) {
         return this[name](...args);
       }
     });
 
-    Object.defineProperty(
-      target,
-      aliasName,
-      newDescriptor
-    );
+    Object.defineProperty(target, aliasName, newDescriptor);
   };
 }
 

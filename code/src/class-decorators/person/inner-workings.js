@@ -1,8 +1,15 @@
 let descriptor = {
-  get() { return `${this.firstName} ${this.lastName}`; },
+  property: {
+    name: () => 'fullName',
+    initializer: () => ({
+      get() { return `${this.firstName} ${this.lastName}`; }
+    }),
+    get(...) { ... }
+    set(...) { ... }
+  },
   enumerable: false,
   configurable: true
 };
 
-descriptor = enumerable(Person.prototype, 'fullName', descriptor) || descriptor;
-Object.defineProperty(Person.prototype, 'fullName', descriptor);
+descriptor = enumerable(Person.prototype, descriptor) || descriptor;
+Object.defineProperty(Person.prototype, descriptor);
