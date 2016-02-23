@@ -6,16 +6,22 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <h1>Async Function Timing: Sequential vs. Parallel</h1>
-  <h2>(Make sure you open console)</h2>
+  <div class="left-column">
+    <h2>Async Function Timing:<br/>Sequential vs. Parallel</h2>
+    
+    <p>
+      <button id="sequential">Run Sequential</button>
+    </p>
+    
+    <p>
+      <button id="parallel">Run Parallel</button>
+    </p>
+  </div>
 
-  <p>
-    <button id="sequential">Run Sequential</button>
-  </p>
-
-  <p>
-    <button id="parallel">Run Parallel</button>
-  </p>
+  <div class="right-column">
+    <h2>Results:</h2>
+    <pre id="logger"></pre>
+  </div>
 
   <script src="http://127.0.0.1:8080/bundle.js"></script>
 </body>

@@ -1,6 +1,7 @@
 import resourceTimer from './resourceTimer';
 import { time } from './util';
 import * as runners from './runners';
+import { clear } from './logger';
 
 const sequential = document.querySelector('#sequential');
 const parallel = document.querySelector('#parallel');
@@ -17,19 +18,20 @@ function enable() {
   sequential.disabled = parallel.disabled = false;
 }
 
-async function run(type) {
+const run = (type) => async function typeAppliedRun() {
   if (running) {
     return;
   }
 
   const fn = ::runners[type];
 
+  clear();
   disable();
 
-  await time(type, () => fn(resourceTimer.generateResources(type)))
+  await time(type, () => fn(resourceTimer.generateResources(type)));
 
   enable();
-}
+};
 
-sequential.addEventListener('click', run.bind(null, 'sequential'));
-parallel.addEventListener('click', run.bind(null, 'parallel'));
+sequential.addEventListener('click', run('sequential'));
+parallel.addEventListener('click', run('parallel'));

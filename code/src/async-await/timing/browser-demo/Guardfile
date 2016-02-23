@@ -1,0 +1,9 @@
+guard 'livereload' do
+  extensions = {
+    css: :css,
+    html: :html,
+  }
+
+  compiled_exts = extensions.values.uniq
+  watch(%r{public/.+\.(#{compiled_exts * '|'})})
+end

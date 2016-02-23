@@ -1,8 +1,10 @@
+import { log } from './logger';
+
 function timerKey(prefix, url, type) {
   return [
     prefix ? `${prefix}:` : '',
     url,
-    type
+    type,
   ].join(' ');
 }
 
@@ -11,7 +13,7 @@ export default {
     return this.timedResources([
       { prefix, url: '/orders/1' },
       { prefix, url: '/orders/2' },
-      { prefix, url: '/orders/3' }
+      { prefix, url: '/orders/3' },
     ]);
   },
 
@@ -36,7 +38,7 @@ export default {
     const { duration } = performance.getEntriesByName(key)[0];
     performance.clearMeasures(key);
 
-    console.log(`${prefix}: ${url} ${type}: ${duration}ms`);
+    log(`${prefix}: ${url} ${type} time: ${duration.toFixed(2)}ms`);
   },
 
   startWaitTime(resource) {
@@ -53,5 +55,5 @@ export default {
 
   stopResponseTime(resource) {
     this.stopTimer(resource, 'response');
-  }
+  },
 };

@@ -1,13 +1,13 @@
+import { log } from './logger';
 import fetchJson from '../../fetch-json/fetch-json-async-await';
 
-function mockRequest(url) {
+export function mockRequest(url) {
   return fetchJson(`${url}?mockRequest`);
 }
 
-async function time(name, fn) {
-  const time = performance.now();
+export async function time(name, fn) {
+  const start = performance.now();
   await fn();
-  console.log(`${name} total: ${performance.now() - time}ms`)
+  const end = (performance.now() - start).toFixed(2);
+  log(`${name} total time: ${end}ms`);
 }
-
-export { mockRequest, time };
