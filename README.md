@@ -9,7 +9,7 @@ To run the async timing demo:
 ```
 $ cd code
 $ npm install
-$ npm run async-server
+$ npm run async-demo
 ```
 
-Then open up http://127.0.0.1:3000/timing-demo in your browser.
+Then, open up http://127.0.0.1:3000/ in your browser.
