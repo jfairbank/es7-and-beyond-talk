@@ -6,7 +6,6 @@
   "main": "index.js",
   "scripts": {
     "async-demo": "babel-node ./src/async-await/timing/browser-demo/server.js",
-    "async-meh": "cd ./src/async-await/timing/browser-demo && webpack-dev-server --inline --hot --host 127.0.0.1 --port 8080 --content-base public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jeremy Fairbank <elpapapollo@gmail.com> (http://jeremyfairbank.com)",
